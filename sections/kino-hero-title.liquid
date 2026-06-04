@@ -1,0 +1,18 @@
+{% if section.settings.show %}
+<section class="kino-hero page-width">
+  <h1 class="kino-title">{{ section.settings.title | default: page.title | escape }}</h1>
+  {% if section.settings.subtitle != blank %}<p class="kino-subtitle">{{ section.settings.subtitle }}</p>{% endif %}
+</section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Kino — Título de página",
+  "settings": [
+    { "type": "checkbox", "id": "show", "label": "Mostrar sección", "default": true },
+    { "type": "text", "id": "title", "label": "Título", "default": "Título de la página" },
+    { "type": "text", "id": "subtitle", "label": "Subtítulo", "default": "Subtítulo opcional" }
+  ],
+  "presets": [{ "name": "Kino — Título de página", "category": "Kino" }]
+}
+{% endschema %}

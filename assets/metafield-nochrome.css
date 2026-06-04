@@ -1,0 +1,4 @@
+.no-chrome .site-header,
+.no-chrome #shopify-section-header,
+.no-chrome .site-footer,
+.no-chrome #shopify-section-footer { display:none !important; }

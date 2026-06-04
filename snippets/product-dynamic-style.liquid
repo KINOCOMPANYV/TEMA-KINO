@@ -1,0 +1,73 @@
+{%- assign bg = product.metafields.custom.background -%}
+{%- assign tc = product.metafields.custom.text_color -%}
+
+{%- if bg or tc -%}
+  <style>
+    /* Encapsulado SOLO al section activo del producto */
+    #shopify-section-{{ section.id }}{
+      {%- if bg -%}background-color: {{ bg }} !important;{%- endif -%}
+      {%- if tc -%}color: {{ tc }} !important;{%- endif -%}
+      /* Variables que algunos temas usan para propagar color */
+      {%- if bg -%}--color-background: {{ bg }}; --bg: {{ bg }};{%- endif -%}
+      {%- if tc -%}--ecom-global-colors-text: {{ tc }}; --color-text: {{ tc }};{%- endif -%}
+    }
+
+    /* Contenedores con fondo/borde por defecto */
+    #shopify-section-{{ section.id }} .product-template,
+    #shopify-section-{{ section.id }} .container,
+    #shopify-section-{{ section.id }} .container--flush,
+    #shopify-section-{{ section.id }} .product-block-list,
+    #shopify-section-{{ section.id }} .product-block-list__wrapper,
+    #shopify-section-{{ section.id }} .product-block-list__item,
+    #shopify-section-{{ section.id }} .page__sub-header,
+    #shopify-section-{{ section.id }} .breadcrumb,
+    #shopify-section-{{ section.id }} .card,
+    #shopify-section-{{ section.id }} .card__header,
+    #shopify-section-{{ section.id }} .card__section,
+    #shopify-section-{{ section.id }} .card__collapsible,
+    #shopify-section-{{ section.id }} .expandable-content,
+    #shopify-section-{{ section.id }} .loox-reviews-default{
+      {%- if bg -%}background: {{ bg }} !important;{%- endif -%}
+      {%- if tc -%}color: {{ tc }} !important;{%- endif -%}
+      border-color: transparent !important;
+      box-shadow: none !important;
+    }
+
+    /* Tipos y enlaces */
+    #shopify-section-{{ section.id }} h1,
+    #shopify-section-{{ section.id }} h2,
+    #shopify-section-{{ section.id }} h3,
+    #shopify-section-{{ section.id }} p,
+    #shopify-section-{{ section.id }} span,
+    #shopify-section-{{ section.id }} a,
+    #shopify-section-{{ section.id }} .rte,
+    #shopify-section-{{ section.id }} .product-meta_reviews-badge,
+    #shopify-section-{{ section.id }} .badge,
+    #shopify-section-{{ section.id }} .badge span,
+    #shopify-section-{{ section.id }} .badge-text,
+    #shopify-section-{{ section.id }} .product-label{
+      color: {{ tc | default: '#fff' }} !important;
+    }
+
+    /* Íconos (fontawesome y badges) */
+    #shopify-section-{{ section.id }} .fa,
+    #shopify-section-{{ section.id }} .fas,
+    #shopify-section-{{ section.id }} .fa-solid,
+    #shopify-section-{{ section.id }} #badges-product .badge i{
+      color: {{ tc | default: '#fff' }} !important;
+    }
+
+    /* Botones y precios */
+    #shopify-section-{{ section.id }} .button,
+    #shopify-section-{{ section.id }} .link,
+    #shopify-section-{{ section.id }} .price{
+      color: {{ tc | default: '#fff' }} !important;
+    }
+
+    /* Quick View dentro del mismo template */
+    #shopify-section-{{ section.id }} .featured-product{
+      {%- if bg -%}background: {{ bg }} !important;{%- endif -%}
+      {%- if tc -%}color: {{ tc }} !important;{%- endif -%}
+    }
+  </style>
+{%- endif -%}

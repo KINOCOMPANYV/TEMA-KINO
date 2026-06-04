@@ -1,0 +1,274 @@
+{% comment %}
+  Este es el archivo de la sección personalizada de Shopify.
+  Contiene el HTML, el CSS y el Schema para el editor.
+{% endcomment %}
+
+<div class="custom-section-container">
+  <div class="custom-section-wrapper">
+    
+    {% comment %} Columna Izquierda {% endcomment %}
+    <div class="left-column">
+      {% if section.settings.sidebar_text != blank %}
+        <div class="sidebar-box">
+          {{ section.settings.sidebar_text }}
+        </div>
+      {% endif %}
+    </div>
+    
+    {% comment %} Columna Derecha {% endcomment %}
+    <div class="right-column">
+      
+      {% comment %} Título Principal {% endcomment %}
+      {% if section.settings.main_title != blank %}
+        <h2 class="main-title">{{ section.settings.main_title | escape }}</h2>
+      {% endif %}
+      
+      {% comment %} Contenido Superior: Imagen y Texto {% endcomment %}
+      <div class="top-content">
+        {% if section.settings.main_image != blank %}
+          <div class="top-image-wrapper">
+            <img src="{{ section.settings.main_image | image_url: width: 800 }}" 
+                 alt="{{ section.settings.main_image.alt | default: 'Imagen principal' }}"
+                 loading="lazy"
+                 width="{{ section.settings.main_image.width }}"
+                 height="{{ section.settings.main_image.height }}">
+          </div>
+        {% else %}
+          <div class="top-image-wrapper placeholder-wrapper">
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          </div>
+        {% endif %}
+
+        {% if section.settings.top_text != blank %}
+          <div class="top-text">
+            {{ section.settings.top_text }}
+          </div>
+        {% endif %}
+      </div>
+      
+      {% comment %} Bloque de Texto Medio {% endcomment %}
+      {% if section.settings.middle_text != blank %}
+        <div class="middle-text">
+          {{ section.settings.middle_text }}
+        </div>
+      {% endif %}
+      
+      {% comment %} Imágenes Inferiores {% endcomment %}
+      <div class="bottom-images">
+        <div class="bottom-image-item">
+          {% if section.settings.bottom_image_1 != blank %}
+            <img src="{{ section.settings.bottom_image_1 | image_url: width: 400 }}" 
+                 alt="{{ section.settings.bottom_image_1.alt | default: 'Imagen inferior 1' }}"
+                 loading="lazy"
+                 width="{{ section.settings.bottom_image_1.width }}"
+                 height="{{ section.settings.bottom_image_1.height }}">
+          {% else %}
+             <div class="placeholder-wrapper small-placeholder">
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          {% endif %}
+        </div>
+        <div class="bottom-image-item">
+          {% if section.settings.bottom_image_2 != blank %}
+            <img src="{{ section.settings.bottom_image_2 | image_url: width: 400 }}" 
+                 alt="{{ section.settings.bottom_image_2.alt | default: 'Imagen inferior 2' }}"
+                 loading="lazy"
+                 width="{{ section.settings.bottom_image_2.width }}"
+                 height="{{ section.settings.bottom_image_2.height }}">
+          {% else %}
+            <div class="placeholder-wrapper small-placeholder">
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+      
+    </div>
+    
+  </div>
+</div>
+
+{% comment %}
+  ====================================================================================
+  CSS - ESTILOS
+  Aquí definimos cómo se verá la sección.
+  ====================================================================================
+{% endcomment %}
+{% stylesheet %}
+.custom-section-container {
+  padding: 40px 20px;
+  background-color: #f9f9f9; /* Color de fondo opcional */
+}
+
+.custom-section-wrapper {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 30px; /* Espacio entre columnas */
+}
+
+/* Columna Izquierda */
+.left-column {
+  flex: 0 0 25%; /* Ocupa el 25% del ancho */
+}
+.sidebar-box {
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  background-color: #ffffff;
+}
+
+/* Columna Derecha */
+.right-column {
+  flex: 1; /* Ocupa el espacio restante */
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espacio entre elementos de la columna derecha */
+}
+
+.main-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.top-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  background-color: #ffffff;
+}
+.top-image-wrapper {
+  flex: 1;
+}
+.top-image-wrapper img, .placeholder-wrapper svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+.top-text {
+  flex: 1;
+}
+
+.middle-text {
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  background-color: #ffffff;
+}
+
+.bottom-images {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
+.bottom-image-item {
+  flex: 1;
+  border: 1px solid #e0e0e0;
+  padding: 10px;
+  background-color: #ffffff;
+}
+.bottom-image-item img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Estilos para los placeholders (cuando no hay imagen) */
+.placeholder-wrapper {
+  background: #f2f2f2;
+  border: 1px dashed #cccccc;
+}
+.placeholder-svg {
+  width: 100%;
+  height: 100%;
+}
+.small-placeholder {
+  min-height: 150px;
+}
+
+/* Diseño responsivo para celulares */
+@media (max-width: 768px) {
+  .custom-section-wrapper {
+    flex-direction: column; /* Apila las columnas en vertical */
+  }
+  .top-content {
+    flex-direction: column; /* Apila la imagen y el texto en vertical */
+  }
+  .main-title {
+    font-size: 2rem;
+  }
+}
+{% endstylesheet %}
+
+{% comment %}
+  ====================================================================================
+  SCHEMA - CONFIGURACIÓN
+  Aquí definimos los campos que aparecerán en el editor de temas de Shopify.
+  ====================================================================================
+{% endcomment %}
+{% schema %}
+{
+  "name": "Mi Sección (Dibujo)",
+  "tag": "section",
+  "class": "custom-content-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Columna Izquierda"
+    },
+    {
+      "type": "richtext",
+      "id": "sidebar_text",
+      "label": "Texto del cuadro izquierdo",
+      "default": "<p>Este es el texto que va en el cuadro de la izquierda. Puedes cambiarlo cuando quieras.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Contenido Principal (Columna Derecha)"
+    },
+    {
+      "type": "text",
+      "id": "main_title",
+      "label": "Título Principal",
+      "default": "Título de la Sección"
+    },
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "Imagen Principal Grande"
+    },
+    {
+      "type": "richtext",
+      "id": "top_text",
+      "label": "Texto junto a la imagen principal",
+      "default": "<p>Escribe aquí el texto que acompaña a la imagen grande.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "middle_text",
+      "label": "Bloque de texto central",
+      "default": "<p>Este es un párrafo de texto más largo que puedes editar desde el personalizador de temas de Shopify. Agrega toda la información que necesites.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Imágenes Inferiores"
+    },
+    {
+      "type": "image_picker",
+      "id": "bottom_image_1",
+      "label": "Imagen Inferior 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "bottom_image_2",
+      "label": "Imagen Inferior 2"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mi Sección (Dibujo)"
+    }
+  ]
+}
+{% endschema %}

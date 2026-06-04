@@ -1,0 +1,63 @@
+{%- capture contentForQuerystring -%}{{ content_for_header }}{%- endcapture -%}
+{%- assign pageUrl = contentForQuerystring
+  | split: '"pageurl":"'
+  | last
+  | split: '"'
+  | first
+  | split: '.myshopify.com'
+  | last
+  | replace: '\/', '/'
+  | replace: '%20', ' '
+  | replace: '\u0026', '&'
+-%}
+{%- assign pageQuerystring = pageUrl | split: '?' | last -%}
+{%- assign limit_product = pageQuerystring | split: 'tpt-products-limit=' | last -%}
+{%- assign media_aspect_ratio = pageQuerystring | split: 'media-aspect-ratio=' | last -%}
+{%- assign show_secondary_image = pageQuerystring | split: 'show-secondary-image=' | last -%}
+{%- assign limit = limit_product | plus: 0 -%}
+{%- assign media_aspect_ratio = media_aspect_ratio | plus: 0 -%}
+
+{%- if show_secondary_image == 'true' -%}
+  {%- assign show_secondary_image = true -%}
+{%- else -%}
+  {%- assign show_secondary_image = false -%}
+{%- endif -%}
+
+{%- assign section_id = section.id | append: '-' | append: collection.id -%}
+
+<div class="tpt-swiper-container">
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      {%- if collection.products -%}
+        {%- for product in collection.products limit: limit -%}
+          <div class="swiper-slide">
+            {% render 'tpt-card-product',
+              card_product: product,
+              media_aspect_ratio: media_aspect_ratio,
+              show_secondary_image: show_secondary_image,
+              section_id: section_id
+            %}
+          </div>
+        {%- endfor -%}
+      {%- else -%}
+        {%- for i in (1..limit) -%}
+          <div class="swiper-slide">
+            {% render 'tpt-card-product',
+              media_aspect_ratio: media_aspect_ratio,
+              image_shape: settings.product_image_shape,
+              show_vendor: settings.product_show_vendor
+            %}
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+  <div class="swiper-button">
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+</div>
+
+{%- if settings.product_enable_quick_add -%}
+  <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}

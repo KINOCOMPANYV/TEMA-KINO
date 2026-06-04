@@ -1,0 +1,65 @@
+.kino-hero{text-align:center}.kino-banner{padding:12px;background:#283e61;color:#fff}.kino-cards__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+
+/* === KINO V5.1 customizations === */
+/* Banner al 80% centrado */
+.kino-banner > .page-width{width:80%;max-width:none;margin-inline:auto;padding-block:10px}
+@media (max-width:990px){.kino-banner > .page-width{width:95%}}
+.kino-banner{border-radius:10px}
+
+/* Imagen + Texto con borde y layout 2 columnas */
+.kino-split{border:1px solid #e5e7eb;border-radius:12px;padding:16px;background:transparent}
+.kino-split__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:center}
+.kino-split__grid.img-left  .kino-split__media{order:0}
+.kino-split__grid.img-left  .kino-split__content{order:1}
+.kino-split__grid.img-right .kino-split__media{order:1}
+.kino-split__grid.img-right .kino-split__content{order:0}
+.kino-split__media img{width:100%;height:auto;display:block;border-radius:10px;object-fit:cover}
+@media (max-width:990px){.kino-split__grid{grid-template-columns:1fr}}
+/* === /KINO V5.1 === */
+
+
+
+/* ====== KINO V5.2 Super — Variables y estilos dinámicos ====== */
+.kino-banner{
+  background: var(--kb-bg,#283e61);
+  color: var(--kb-fg,#fff);
+  border-radius: var(--kb-radius,12px);
+  margin: 0 auto 32px;
+  max-width: var(--kb-width,900px);
+  box-shadow: 0 6px 18px rgba(0,0,0,.18);
+  box-sizing: border-box;
+}
+.kino-banner .kb-inner{
+  padding: var(--kb-pad-y,14px) var(--kb-pad-x,20px);
+  text-align: var(--kb-align,center);
+  font-family: var(--kb-font,inherit);
+}
+.kino-banner .kb-heading{ font-size: var(--kb-fh,22px); margin:0 0 6px; }
+.kino-banner .kb-text{ font-size: var(--kb-fp,16px); margin:0; }
+
+.kino-split{
+  max-width: var(--ks-width,900px);
+  margin: 0 auto 32px;
+  border: 1px solid var(--ks-border,#e5e7eb);
+  border-radius: var(--ks-radius,12px);
+  padding: var(--ks-pad,20px);
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+  box-sizing: border-box;
+}
+.kino-split__grid{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); align-items:center; gap: var(--ks-gap,24px); }
+.kino-split__grid.img-left  .kino-split__media{ order:0 }
+.kino-split__grid.img-left  .kino-split__content{ order:1 }
+.kino-split__grid.img-right .kino-split__media{ order:1 }
+.kino-split__grid.img-right .kino-split__content{ order:0 }
+.kino-split__media img{ width:100%; height:auto; display:block; border-radius:10px; object-fit:cover; margin-bottom:10px }
+
+.kino-hero .kino-title{ text-align:center; font-size:2.4rem; font-weight:800; color:#fff; margin:20px 0 8px; line-height:1.2 }
+.kino-hero .kino-subtitle{ text-align:center; font-size:1.25rem; color:#d9d9d9; margin:0 0 20px; }
+
+@media (max-width:1023px){
+  .kino-banner, .kino-split{ max-width:80% }
+  .kino-split__grid{ grid-template-columns:1fr }
+  .kino-hero .kino-title{ font-size:1.9rem }
+  .kino-hero .kino-subtitle{ font-size:1.05rem }
+}
+
