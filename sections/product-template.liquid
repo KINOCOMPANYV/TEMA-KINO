@@ -84,7 +84,13 @@
                   <div id="product-description" class="card__collapsible">
                     <div class="card__collapsible-content">
                       <div class="rte text--pull">
+                        {%- if product.metafields.custom.seo_description != blank -%}
+                          <p class="product-seo-description" style="margin-bottom: 15px; font-weight: 500;">{{ product.metafields.custom.seo_description }}</p>
+                        {%- endif -%}
                         {{ product.description | remove: 'data-section-type="product"' }}
+                        <div style="font-size: 0.9em; color: #666; margin-top: 30px; padding-top: 15px; border-top: 1px solid #eee;">
+                          <strong>{{ product.title | escape }}</strong> en Kino Company S.A.S. Descubre nuestra colección de relojes y accesorios con venta al detal y al por mayor en {{ shop.address.city | default: 'Colombia' }}.
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -96,13 +102,25 @@
                   {%- if section.settings.content_display_mode == 'show_all_and_expand_description' -%}
                     <div class="card__section">
                       <div class="rte text--pull">
+                        {%- if product.metafields.custom.seo_description != blank -%}
+                          <p class="product-seo-description" style="margin-bottom: 15px; font-weight: 500;">{{ product.metafields.custom.seo_description }}</p>
+                        {%- endif -%}
                         {{ product.description | remove: 'data-section-type="product"' }}
+                        <div style="font-size: 0.9em; color: #666; margin-top: 30px; padding-top: 15px; border-top: 1px solid #eee;">
+                          <strong>{{ product.title | escape }}</strong> en Kino Company S.A.S. Descubre nuestra colección de relojes y accesorios con venta al detal y al por mayor en {{ shop.address.city | default: 'Colombia' }}.
+                        </div>
                       </div>
                     </div>
                   {%- else -%}
                     <div class="card__section expandable-content" aria-expanded="false">
                       <div class="rte text--pull">
+                        {%- if product.metafields.custom.seo_description != blank -%}
+                          <p class="product-seo-description" style="margin-bottom: 15px; font-weight: 500;">{{ product.metafields.custom.seo_description }}</p>
+                        {%- endif -%}
                         {{ product.description | remove: 'data-section-type="product"' }}
+                        <div style="font-size: 0.9em; color: #666; margin-top: 30px; padding-top: 15px; border-top: 1px solid #eee;">
+                          <strong>{{ product.title | escape }}</strong> en Kino Company S.A.S. Descubre nuestra colección de relojes y accesorios con venta al detal y al por mayor en {{ shop.address.city | default: 'Colombia' }}.
+                        </div>
                       </div>
 
                       <button class="expandable-content__toggle">

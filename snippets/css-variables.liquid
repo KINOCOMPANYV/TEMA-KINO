@@ -57,14 +57,14 @@
     --textstrong          	       : {{ settings.textstrong }};
     --text-color-rgb           : {{ settings.text_color | color_extract: 'red' }}, {{ settings.text_color | color_extract: 'green' }}, {{ settings.text_color | color_extract: 'blue' }};
     --heading-color            : {{ settings.heading_color }};
-    --border-color             : {{ settings.border_color }};
-    --border-color-rgb         : {{ settings.border_color | color_extract: 'red' }}, {{ settings.border_color | color_extract: 'green' }}, {{ settings.border_color | color_extract: 'blue' }};
-    --form-border-color        : {{ settings.border_color | color_darken: 5 }};
+    --border-color             : transparent !important;
+    --border-color-rgb         : 255, 255, 255;
+    --form-border-color        : transparent !important;
     --accent-color             : {{ settings.accent_color }};
     --accent-color-rgb         : {{ settings.accent_color | color_extract: 'red' }}, {{ settings.accent_color | color_extract: 'green' }}, {{ settings.accent_color | color_extract: 'blue' }};
     --link-color               : {{ settings.link_color }};
     --link-color-hover         : {{ settings.link_color | color_darken: 15 }};
-    --background               : {{ settings.background }};
+    --background               : #ffffff !important;
     --secondary-background     : {{ settings.secondary_background }};
     --secondary-background-rgb : {{ settings.secondary_background | color_extract: 'red' }}, {{ settings.secondary_background | color_extract: 'green' }}, {{ settings.secondary_background | color_extract: 'blue' }};
     --accent-background        : {{settings.accent_color | color_modify: 'alpha', 0.08 }};
