@@ -621,3 +621,46 @@ hr {
     padding-bottom: 6px;
   }
 }
+
+/* ═══ Tarjetas de producto – diseño limpio ═══ */
+.product-item {
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  background: var(--secondary-background);
+}
+.product-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
+
+/* ═══ Botón de compra unificado ═══ */
+.product-form__add-button,
+.button--primary {
+  border-radius: 8px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+.product-form__add-button:hover,
+.button--primary:hover {
+  transform: scale(1.02);
+}
+.product-form__add-button:active,
+.button--primary:active {
+  transform: scale(0.98);
+}
+
+/* ═══ Focus visible para accesibilidad ═══ */
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* ═══ Sección título – estilo más limpio ═══ */
+.section__title::after {
+  border-radius: 4px;
+  height: 3px;
+  width: 60px;
+  margin-top: 8px;
+}
