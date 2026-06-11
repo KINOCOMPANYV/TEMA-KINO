@@ -46,6 +46,8 @@
                     class="brands-bar__logo lazyload"
                     data-src="{{ block.settings.image | image_url: width: 200 }}"
                     alt="{{ block.settings.brand_name | default: block.settings.image.alt | default: 'Marca distribuida' | escape }}"
+                    width="{{ block.settings.image.width }}"
+                    height="{{ block.settings.image.height }}"
                     loading="lazy"
                   >
                 </a>

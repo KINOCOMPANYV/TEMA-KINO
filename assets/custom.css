@@ -601,3 +601,23 @@ hr {
         padding-right: 15px !important;
     }
 }
+
+/* ═══ Accesibilidad táctil móvil (WCAG 2.5.5 – min 44x44px) ═══ */
+@media (max-width: 768px) {
+  .brands-bar__link,
+  .nav-bar__link,
+  a.link,
+  button:not(.carousel-arrow),
+  input[type="submit"],
+  .product-form__add-button,
+  .botaoflutuante .button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Mejorar espacio entre enlaces de navegación para evitar taps accidentales */
+  .mobile-menu__item {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+}
