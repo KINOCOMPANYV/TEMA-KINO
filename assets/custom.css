@@ -579,3 +579,25 @@ button.qtyplus, button.qtyminus {
 hr {
     display: none !important;
 }
+
+/* Remover padding y márgenes de la galería de producto para que ocupe todo el ancho */
+.product-block-list__item--gallery,
+.product-block-list__item--gallery .card,
+.product-block-list__item--gallery .card__section,
+.product-gallery__carousel-wrapper {
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+}
+
+@media screen and (max-width: 999px) {
+    .container.container--flush {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    
+    .product-block-list__item:not(.product-block-list__item--gallery) {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+}
